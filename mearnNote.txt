@@ -1,0 +1,192 @@
+MONGODB-
+1. DATABASE is used to store and manage data permanently(MYSQl,SQl,MSAccess,MongoDb,oracle)
+2. MongoDB-is NoSQL database data stored as JSON documents it stored in memory as BSON ({"key":value}), To store Multiple
+   JSON documents is known as Collection
+3. difference btw SQL & MongoDB
+                SQL                                   MONGODB
+------------------------------------------------------------------------------------------
+1. Relational SQL DBMS                              1.Document Oriented No NoSQL DB
+2.Data stored in Table ,every Table                 2.Data Stored in Collection as JSON Document
+  have rows and column
+3. uses fixed schema                                3.Uses Dynamic schema
+4. Support rich set of data types                   4. Limited set of data types
+5. SQl uses in Traditional Bussiness app            5. MongoDB used in Big Data,Realtime web app
+6. Optimized for complex join & transaction         6. Optimized for high performance,scalability & availability
+
+
+4.  MongoDB in the following environments:
+   -MongoDB Atlas  : The fully managed service for MongoDB deployments in the cloud
+   -MongoDB Enterprise  : The subscription-based, self-managed version of MongoDB
+   -MongoDB Community  : The source-available, free-to-use, and self-managed version of MongoDB
+ 
+ 5. MongoDB Shell/ monogosh : is terminal used to write  MongoDB commands, it is used to interact with MongoDB server, it is used to execute MongoDB commands,
+
+6. Collection: used to store json documents,to create a collection use small letter in its plural
+    format
+7. MongoDB generate a unique value to identify each document in a collection using _id key its value is hexadecimal
+8. CRUD Operations performed in MonoDB
+    -to get/read single documents from MongoDB collection: use findOne({key:value}) which return the entire document when
+    the key  and value is present in collection otherwise return 'null'
+    -to get/read all documents from MongoDB collection: use find({key:value}) which return the all documents when
+    the key  and value is present in collection otherwise return 'null'
+    - to insert a single document use insertOne(key:value)
+    - to insert a multiple document use insertMany(key:value)
+    -to get total count of documents in a collection: use 
+    -to limit the  number of documents returned from a collection: use limit()
+    -to skip documents  in a collection: use skip(count)
+    -to sort documents  in a collection: use sort({key:1/-1})
+    -to get documents after applying query statements use $ symbol : $gt/$gte/$lt/$lte,$eq/$neq/$exists
+    -to update a single documents  use updateOne({key:value},{$set :{key:value}})
+          we can use $set/$inc/$push
+    -to update a multiple documents   use updateMany({key:value},{$set :{key:value}})
+    -to delete a single document  use deleteOne({key:value})
+    -to delete many document   use deleteMany({key:value})
+
+
+
+9.Aggregation: used to combine.joining tow collection in MongoDB
+    -using $lookup:  used to left outer join to collection in same database
+    -syntax:  $lookup:{from:collection,localField:field,foreignField:field,as:field}
+
+
+
+-----------------------------------------------------------------------
+      SERVER SIDE: /BACKEND: used to resolve client/front end requests
+----------------------------------------------------------------------------
+NODE JS: runtime environment for js outside the browser
+--------------------------
+1. is a free open-source,cross platform runtime environment that let us to create servers(used to 
+resolve multiple client requests),web apps,command line tools and scripts
+2. Features
+    -Extermely Fast 
+    -Highly Scalable
+    -Asynchronus functions
+3. Node js Global Objects: Objects can be accessed throughout node app without importing it,
+ex: 'process' objects  ,environment variable in process used to store system configuration/secret
+      data/password of an application   
+4.  Node js Modules: used to share data from 1 file to another file,using CommonJSModule system,
+    -require('package-name/file path') : to import data from a file/package
+    -module.export / exports keyword :to export data from a file
+    -Predefined / Build in Modules in Node js
+          -fs module: to handle file system of a computer
+          -http module: used to create http server
+          -http Module: used to create https servers
+          -event module: manage userdefined events
+          -crypto module: 
+5. Execution Model: Event-Driven ,Non-Blocking I/O Model,Optimized Asynchronus Task
+6. API Access: Access to system level API(File System,Network,Process)
+7. Working of Node js: used to resolve client requests and send response while working with single thread
+      -Non Blocking I/O
+      -Asynchronus functions
+
+
+    EXPRESS JS: Node js Framework used to server creation
+    --------------------------------------------------------
+    1. uses in client server  architecture/application,to create server with node js Features
+    2. Steps to create EXPRESS server for resolving client requests
+        -Create s Server folder for server application
+        -create package.json file inside server folder ,use command: npm init -y
+        -we have to update package.json 'script' key value as the following object,
+          {"start":"node index.js"}  and remove its test key and value from it
+        -Install packages needed to create node server app
+            -express package: used to create server - npm i express
+            -cors package: used to enable cross origin Resources Shairing- npm i cors
+            -dotenv package:  used to load content  in .env file into process object - npm i dotenv
+
+            -create .env file in server folder,which used to store environmental variables of a project
+             -create .gitingore file in server folder,which used to store files of ingored while adding to git,and add node_modules,.env into file contents
+             -Create index.js file inside server folder,which used to define express server for resolving client
+                -import express,dotenv,cors in index.js file
+                -create  express server using express package
+                -use cors in our server app,to enable data shairing between diffrent applicayion
+                  -use json parser in server app for parsing  json data from  client request
+                  -create a port for server application
+                  -run server app in specified port
+                  -run server app using  command: node index.js / nodemon index.js
+                  -to resolve http request using express server: express-server-name.httpRequestMethod('path',(request,response)=>{
+                    using response object share server response to client
+                  })
+-How to set up path/url for resolving client request in server
+    -create routes folder in server folder and create a js file inside the routes folder for
+      defining path/ route corresponding to client request
+      -steps to define path
+    -import express
+    -create a object for express Router class which is capable of setting  up routes in server
+
+  -to setup controller for server app: used to define logic to resolve client request
+      -create controllers folder in server,and create a js file inside
+
+
+to setup database connection from node js server
+    -create folder for defining db connection in server folder
+    -inside db folder create js file to define connection steps
+          -import mongoose
+          -get db connection string from mongoDB Atlas to js file
+          -to connect with MongoDB use connect method of mongoose pass connection string as argument
+          -import connection js file in index.js
+    -to set up for communicating node js and mongoDb
+          -create model folder in server folder
+          -create js file inside the folder for creating model
+                -import mongoose
+                -create schema for the model
+                -create model using that schema
+                -export model
+    -to perform AUTHORIZATION using middleware
+        -create a folder for middleware
+        -create js file inside folder to define  middleware
+
+        -
+MONGOOSE : NODE JS PACKAGE FOR MONOGDB DATA MODELLING
+----------------------------------------------------
+1. Mongoose is an ODM (Object Data Modelling) Library for MongoDb,helps to create and manage MonogoDb
+documents with node js
+2. Install Mongoose in node js app: npm i 
+3. Schema : A schema defines the structure of your collection documents. A Mongoose schema maps directly to A
+MongoDB collection.to crate schema we have to create object for mongoose "Schema" class
+4. Models take your schema and apply it to each document in its collection,create model in mongoose,
+use model method, syntax: model('model-name',schema)
+-models area responsible for all document interactions like creating,reading,updating, and deleting (CRUD).
+5.in node js app,controller will communicate with model inorrder to manage data in mongoDb
+6. CRUD Operations in Mongoose
+      -to creating a document using mongoose in MongoDb,create an object of model with same order of its schema,
+      after that we have to save the object in order to appear changes in mongoDB using save() method mongoose
+        -Read /get documents from MongoDB: find(),findOne(),findById()
+        -Update a document: updateOne(),updateMany(),findByIdandUpdate(_id of document,update query)
+        -Delete a document: deleteOne(),deleteMany(),findByIdAndDelete(_id of document)
+7. Mongoose query helper: skip(),limit(),sort()
+
+
+JSON WEB TOKEN: NODE JS PACKAGE FOR  AUTHORIZATION
+-----------------------------------------------------
+1. install Json Web Token Library: npm i jsonwebtoken
+2. Token Generation using JWT: sign(payload,password)
+    -payload: used to store data inside token creation
+3.Token verify using jwt: verify(token,password)
+
+
+  MIDDLEWARE : NODE JS
+  -------------------------------------------------
+  1. Used to control request response cycle in server.before resolving request server can perform any task
+  (AUTHORIZATION,data format changing etc) using middleware
+
+  2. middleware are functions with 3 arguments,they are request,response,next
+  here request will give you client request,response object will give response from server to client,next method used to control request
+
+  3. Middleware can be of 2 types
+  -Application specific middleware: middleware will active for all client request
+  -Router specific middleware: middleware will active for only selected route/path
+
+MULTER: NODE JS MIDDLEWARE FOR HANDLING MULTIPART?FORM DATA
+-------------------------------------------------------------------
+1.multer is node js middle' for handling  multipart/form-data,which is used to upload files to server
+2. multer adds a body object  to the request object of Express. body contains key-value pairs of data sent in the request body.
+
+. install Multer in node js app: npm i multer
+4.multer can 
+
+
+
+
+
+
+
